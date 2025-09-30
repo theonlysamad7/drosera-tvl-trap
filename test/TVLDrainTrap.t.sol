@@ -12,7 +12,7 @@ contract TVLDrainTrapTest is Test {
     }
 
     function testTrapTrigger() public {
-        // ✅ Declare a bytes array with 3 slots
+        // ✅ Declare array of length 3
         bytes ;
 
         // Encode fake TVL datapoints
@@ -29,6 +29,7 @@ contract TVLDrainTrapTest is Test {
     }
 
     function testTrapNotTriggered() public {
+        // ✅ Declare array of length 3
         bytes ;
 
         // Encode fake TVL datapoints without big drop
