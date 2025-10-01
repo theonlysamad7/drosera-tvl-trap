@@ -13,8 +13,10 @@ contract TVLDrainTrapTest is Test {
     }
 
     function testNoTriggerWhenSmallDrop() public {
-        // newest first: 900 (now), then older two at 1000
+        // Declare an array of 3 snapshots
         bytes ;
+
+        // newest first: 900 (now), then older two at 1000
         data[0] = abi.encode(address(0xCAFE), 900 ether, block.number);
         data[1] = abi.encode(address(0xCAFE), 1000 ether, block.number - 1);
         data[2] = abi.encode(address(0xCAFE), 1000 ether, block.number - 2);
@@ -24,8 +26,10 @@ contract TVLDrainTrapTest is Test {
     }
 
     function testTriggerOnLargeDrop() public {
-        // newest first: 700 (now), then two older at 1000
+        // Declare an array of 3 snapshots
         bytes ;
+
+        // newest first: 700 (now), then older two at 1000
         data[0] = abi.encode(address(0xCAFE), 700 ether, block.number);
         data[1] = abi.encode(address(0xCAFE), 1000 ether, block.number - 1);
         data[2] = abi.encode(address(0xCAFE), 1000 ether, block.number - 2);
@@ -47,7 +51,7 @@ contract TVLDrainTrapTest is Test {
         assertEq(tvlNow, 700 ether);
         assertEq(baseline, 1000 ether);
         assertGe(dropBps, 3000); // at least ~30%
-        assertEq(thresholdBps, 2000); // from constant in contract
+        assertEq(thresholdBps, 2000); // from contract constant
         assertTrue(blockNow > 0);
     }
 }
